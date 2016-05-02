@@ -1,4 +1,11 @@
 FROM mesosphere/mesos:VERSION
 MAINTAINER Mesosphere <support@mesosphere.io>
 
+RUN apt-get update && apt-get install -y curl \
+    && curl https://get.docker.com/builds/Linux/x86_64/docker-1.10.3.tgz | tar xz -C / \
+    && chmod +x /usr/local/bin/docker \
+    && ln -s /usr/local/bin/docker /usr/bin/docker \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
 ENTRYPOINT ["mesos-slave"]

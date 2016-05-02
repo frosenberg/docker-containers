@@ -37,5 +37,5 @@ mesos-master: mesos check-version
 
 mesos-slave: mesos check-version
 	sed "s/VERSION/$(VERSION)/g" dockerfile-templates/$@ > $@
-	docker build -t mesosphere/$@:$(VERSION) - < $@
-	docker tag mesosphere/$@:$(VERSION) mesosphere/$@:$(SHORT_VERSION) < $@
+	docker build -t frosenberg/$@:$(VERSION) - < $@
+	docker tag frosenberg/$@:$(VERSION) frosenberg/$@:$(SHORT_VERSION) < $@
